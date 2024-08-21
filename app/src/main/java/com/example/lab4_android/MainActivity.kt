@@ -1,3 +1,7 @@
+//Fernando Ruiz
+//Carné 23065
+//Lab 4 Android
+
 package com.example.lab4_android
 
 import android.os.Bundle
@@ -24,6 +28,8 @@ import java.net.URL
 
 data class Recipe(val name: String, val imageUrl: String)
 
+
+// Configuración de la actividad principal usando setcontent
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +44,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+// Composable RecipeApp que contiene la interfaz de usuario
 @Composable
 fun RecipeApp(modifier: Modifier = Modifier) {
     var name by remember { mutableStateOf(TextFieldValue("")) }
@@ -46,6 +53,7 @@ fun RecipeApp(modifier: Modifier = Modifier) {
     var showList by remember { mutableStateOf(false) }
     var errorMessage by remember { mutableStateOf<String?>(null) }
 
+    // Columna principal que contiene los campos de entrada y el botón
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -64,6 +72,7 @@ fun RecipeApp(modifier: Modifier = Modifier) {
             label = { Text("URL de la imagen") },
             modifier = Modifier.fillMaxWidth()
         )
+        // Botón para agregar la receta
         Spacer(modifier = Modifier.height(8.dp))
         Button(
             onClick = {
@@ -111,6 +120,7 @@ fun RecipeApp(modifier: Modifier = Modifier) {
     }
 }
 
+// Composable RecipeList que muestra una lista de recetas
 @Composable
 fun RecipeList(recipes: List<Recipe>) {
     LazyColumn {
